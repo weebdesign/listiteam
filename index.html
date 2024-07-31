@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+         *{
+    margin: 0%;
+   padding: 0%; 
+    /* outline: none; */
+   /* border: none;  */
+  
+   font-family: Arial,  sans-serif;
+  
+}
+ body{
+    background-color: #ebe9e9;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+  .container{
+    box-shadow: 0px 2px 5px 5px;
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 1rem;
+ }  
+ h1{
+    margin-bottom: 10px;
+ }
+ .btn{
+    margin-left:24%; 
+    
+    
+ }
+ 
+
+ #add{
+    margin-right: 7px;
+    padding: 3px 8px;
+    font-weight: 900;
+    border: 1px solid rgba(128, 128, 128, 0.481);
+    border-radius: 5px;
+
+ }
+
+ #delete{
+    margin-right: 7px;
+    padding: 3px 8px;
+    margin-right: 5px;
+    font-weight: 800;
+    border: 1px solid gray;
+    border-radius: 5px;
+
+ }
+ 
+ 
+ #taskInput{
+    
+    width: 69%;
+    margin-left: 15%;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    background-color: rgb(245, 243, 243);
+ }
+ li{
+    margin: 5px;
+    font-size: 12px;
+    list-style:circle;
+ 
+ }
+
+    </style>
+</head>
+<body>
+    <div class="container" >
+
+         <h1 id="toDo" style="text-align: center;"> To Do List</h1> 
+         <div style="margin: auto;">
+        <input  type="text" id="taskInput"placeholder="Exmp:kal sokale khichuri ranna korbo ..."> <br>
+    
+       <div class="btn">
+        <button id="add" onclick="addTask()">add</button>
+        <button id="delete" onclick="deleteCheck () ">Delete Selected</button>
+       </div >
+        
+        
+
+         </ul>
+        </div>
+        <ul id="taskLi" >
+    </div>
+   
+    
+
+
+
+
+
+
+
+    <!-- <script src="app.js"></script> -->
+     <script>
+        "use strict"
+
+      
+
+const addTask=()=>{
+    const taskInput =document.getElementById('taskInput');
+    const taskInputValue =taskInput.value.trim();
+   
+    
+
+   
+    if(taskInputValue !==''){
+        const taskLi=document.getElementById('taskLi');
+        
+        const li=document.createElement('li');
+        li.innerHTML='<input type="checkbox"> ' + taskInputValue + '<button onclick="deleteTask(this)"style="margin-left: 5px;">Complete</button>'
+
+      
+
+        taskLi.appendChild(li);
+        taskInput.value=" "
+
+    }
+    else{
+        alert(' Jui Empty value Please add task')
+    }
+}
+ const deleteTask =(btn)=>{
+    const li =btn.parentNode;
+    li.parentNode.removeChild(li);
+
+    
+
+   
+ }
+ const deleteCheck =()=>{
+    // const taskLi=document.getElementById('taskLi');
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
+  checkboxes.forEach(checkbox=>{
+    const li =checkbox.parentNode;
+    li.parentNode.removeChild(li)
+    console.log(checkbox)
+
+  });
+
+    
+    console.log(checkboxes)
+ }
+
+
+
+     </script>
+    
+</body>
+</html>
